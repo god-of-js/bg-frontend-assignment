@@ -1,14 +1,23 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-
+import SignIn from "../views/SignIn.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "*",
+    redirect: "/",
+  },
+  {
+    path: "/",
+    name: "SignIn",
+    component: SignIn,
   },
   {
     path: "/about",

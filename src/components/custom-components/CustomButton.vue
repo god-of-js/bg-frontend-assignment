@@ -1,0 +1,44 @@
+<template>
+  <button :class="inActive ? 'in-active-btn' : 'active'" :disabled="inActive">
+    <slot v-if="!loading" />
+    <span v-else>loading...</span>
+  </button>
+</template>
+
+<script>
+export default {
+  name: "CustomButton",
+  props: {
+    inActive: {
+      type: Boolean,
+      default: false,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import "@/assets/styles/colors.scss";
+button {
+  outline: none;
+  border: transparent;
+  width: fit-content;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  &.in-active-btn {
+    background: $border-color;
+    color: $grey;
+    cursor: not-allowed;
+  }
+  &.active {
+    color: $white;
+    background-color: $black;
+    cursor: pointer;
+  }
+}
+</style>
