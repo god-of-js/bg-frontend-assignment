@@ -1,12 +1,15 @@
 <template>
   <div class="custom-carousel">
-    <img :src="`../../assets/images/house-${name}`" :alt="name" />
+    <img
+      :src="require(`../../assets/images/house-${presentImg}.jpg`)"
+      :alt="name + presentImg"
+    />
     <carousel-indicator />
   </div>
 </template>
 
 <script>
-import CarouselIndicator from "./CarouselIndicator";
+import CarouselIndicator from "./custom-carousel/CarouselIndicator";
 export default {
   name: "CustomCarousel",
   props: {
@@ -19,6 +22,25 @@ export default {
       required: true,
     },
   },
+  data: () => {
+    return {
+      currentIndex: 0,
+    };
+  },
+  computed: {
+    presentImg() {
+      return this.pictures[this.currentIndex];
+    },
+  },
+  methods: {
+    prev() {
+      if (this.currentIndex === 0) this.currentIndex = this.pictures.length;
+      else this.currentIndex--;
+    },
+    nextImage() {
+      this.currentIndex++;
+    },
+  },
   components: {
     CarouselIndicator,
   },
@@ -28,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/colors.scss";
 .custom-carousel {
-  padding: 5px;
+  padding: 10px;
   border: 1px solid $border-color;
   height: 55%;
   border-radius: 5px;

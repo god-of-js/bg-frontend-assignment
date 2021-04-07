@@ -1,6 +1,6 @@
 <template>
   <div class="unit">
-    <custom-carousel :pictures="pictures" :name="name + ', ' + region" />
+    <custom-carousel :pictures="dummyPictures" :name="name + ', ' + region" />
     <div class="info-content">
       <h3>{{ name + "," + region }}</h3>
     </div>
@@ -44,7 +44,7 @@ export default {
   },
   data: () => {
     return {
-      dummyPictures: [""],
+      dummyPictures: ["one", "two", "three", "four"],
     };
   },
   components: {
