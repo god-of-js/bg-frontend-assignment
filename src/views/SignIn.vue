@@ -2,10 +2,7 @@
   <div class="sign-in">
     <article>
       <header>
-        <b
-          >Blueground on
-          <div class="circle">Mars</div></b
-        >
+        <b><span>Blueground on </span> <span class="circle">Mars</span></b>
       </header>
       <form @submit.prevent="login">
         <custom-input :placeholder="'Colonist ID'" :input.sync="data.email" />
@@ -52,7 +49,7 @@ export default {
       this.loading = true;
       this.$store
         .dispatch("auth/login", this.data)
-        .then(() => this.$router.push("/home"))
+        .then(() => this.$router.push("/units"))
         .finally(() => {
           this.loading = false;
         });
