@@ -61,6 +61,7 @@ export default {
     color: $white;
     font-size: 1em;
     outline: none;
+    cursor: pointer;
   }
 }
 </style>

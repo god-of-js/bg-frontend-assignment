@@ -1,5 +1,8 @@
 <template>
-  <button :class="inActive ? 'in-active-btn' : 'active'" :disabled="inActive">
+  <button
+    :class="[inActive ? 'in-active-btn' : 'active', 'btn']"
+    :disabled="inActive"
+  >
     <slot v-if="!loading" />
     <span v-else>loading...</span>
   </button>

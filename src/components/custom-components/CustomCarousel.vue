@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     prev() {
-      if (this.currentIndex === 0) this.currentIndex = this.pictures.length;
+      if (this.currentIndex === 0) this.currentIndex = this.pictures.length - 1;
       else this.currentIndex--;
     },
     nextImage() {
@@ -62,7 +62,7 @@ export default {
 .custom-carousel {
   padding: 10px;
   border: 1px solid $border-color;
-  height: 55%;
+  height: 45%;
   border-radius: 5px;
   position: relative;
   .indicator-container {
@@ -72,6 +72,20 @@ export default {
   img {
     width: 100%;
     height: 100%;
+  }
+}
+.slide {
+  -webkit-animation: slide-left 0.5s;
+  -webkit-animation-delay: 2s;
+  animation: slide-left 0.5s;
+  animation-delay: 2s;
+}
+@keyframes slide-left {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 0px;
   }
 }
 </style>
