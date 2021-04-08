@@ -1,12 +1,9 @@
 import axios from "axios";
 import { BASE_URL } from "../config/secrets";
-const token = "";
+import store from "@/store";
 let config = {
-  baseURL: `${BASE_URL}`,
+  baseURL: `${BASE_URL}/api`,
   timeout: 5000,
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
 };
 const service = axios.create(config);
 service.interceptors.response.use(
@@ -16,6 +13,8 @@ service.interceptors.response.use(
   },
   (err) => {
     console.log(err.response);
+    if (err.response.data.message === "jwt expired")
+      store.dispatch("user/logout");
     return Promise.reject(err.response);
   }
 );

@@ -1,15 +1,21 @@
 <template>
   <div class="custom-carousel">
-    <img
-      :src="require(`../../assets/images/house-${presentImg}.jpg`)"
-      :alt="name + presentImg"
-    />
-    <carousel-indicator />
+    <img :src="BASE_URL + presentImg" :alt="name" />
+    <div class="indicator-container">
+      <carousel-indicator
+        class="indicator"
+        @nextImage="nextImage"
+        @prevImage="prev"
+        :arrLength="pictures.length"
+        :currentIndex="currentIndex"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import CarouselIndicator from "./custom-carousel/CarouselIndicator";
+import { BASE_URL } from "@/config/secrets";
 export default {
   name: "CustomCarousel",
   props: {
@@ -25,6 +31,7 @@ export default {
   data: () => {
     return {
       currentIndex: 0,
+      BASE_URL,
     };
   },
   computed: {
@@ -38,7 +45,8 @@ export default {
       else this.currentIndex--;
     },
     nextImage() {
-      this.currentIndex++;
+      if (this.currentIndex !== this.pictures.length - 1) this.currentIndex++;
+      else this.currentIndex = 0;
     },
   },
   components: {
@@ -55,6 +63,10 @@ export default {
   height: 55%;
   border-radius: 5px;
   position: relative;
+  .indicator-container {
+    display: flex;
+    justify-content: flex-end;
+  }
   img {
     width: 100%;
     height: 100%;

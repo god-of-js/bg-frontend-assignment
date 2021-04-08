@@ -5,9 +5,9 @@ export default {
       api()
         .post("/auth/login", data)
         .then((result) => {
+          commit("user/setUserData", result.data, { root: true });
           localStorage.setItem("userData", JSON.stringify(result.data.user));
           localStorage.setItem("userToken", JSON.stringify(result.data.token));
-          commit("user/setUserData", result.data, { root: true });
           resolve();
         })
         .catch((err) => {

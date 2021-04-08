@@ -1,8 +1,8 @@
 <template>
   <div class="unit">
-    <custom-carousel :pictures="dummyPictures" :name="name + ', ' + region" />
+    <custom-carousel :pictures="pictures" :name="name + ', ' + region" />
     <div class="info-content">
-      <h3>{{ name + "," + region }}</h3>
+      <h3>{{ name + "-" + region }}</h3>
     </div>
   </div>
 </template>
