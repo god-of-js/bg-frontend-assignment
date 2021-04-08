@@ -1,6 +1,6 @@
 export default {
   setUnits(state, params) {
-    state.units = params;
+    state.units.push(...params);
   },
   setUnit(state, param) {
     state.unit = param;

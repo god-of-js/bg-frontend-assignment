@@ -30,7 +30,7 @@ button {
   outline: none;
   border: transparent;
   width: fit-content;
-  padding: 10px 20px;
+  padding: 6px 30px;
   border-radius: 5px;
   font-size: 0.9em;
   &.in-active-btn {

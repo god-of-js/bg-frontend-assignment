@@ -5,7 +5,7 @@
       <h4>{{ name + "-" + region }}</h4>
       <p>{{ description }}</p>
       <p><b>Cancellation Policy: </b>{{ cancellation }}</p>
-      <span>&#36;{{ price }}</span>
+      <span>{{ price }} BTC</span>
       <ratings :rating="rating" />
     </div>
   </div>

@@ -12,7 +12,7 @@
       <div class="content-container">
         <header>
           <h4>{{ unit.name + "-" + unit.region }}</h4>
-          <span class="price">&#36;{{ unit.price }}</span>
+          <span class="price">{{ unit.price }} BTC</span>
         </header>
         <ratings :rating="unit.rating" class="ratings" />
         <p>Description: <span v-html="unit.description"></span></p>

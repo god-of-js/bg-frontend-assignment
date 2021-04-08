@@ -15,6 +15,8 @@
         :cancellation="unit.cancellation"
       />
     </div>
+    <div class="loading-text" v-if="loading">Loading....</div>
+    <modal />
     <router-view></router-view>
   </div>
 </template>
@@ -22,8 +24,15 @@
 <script>
 import TopNav from "@/components/layout/TopNav.vue";
 import Unit from "@/components/units/Unit.vue";
+import Modal from "@/components/modals/Modal.vue";
 export default {
   name: "Units",
+  data: () => {
+    return {
+      loading: false,
+      page: 0,
+    };
+  },
   computed: {
     units() {
       return this.$store.state.units.units;
@@ -32,9 +41,31 @@ export default {
   components: {
     TopNav,
     Unit,
+    Modal,
   },
   mounted() {
-    this.$store.dispatch("units/getUnits");
+    this.getUnits();
+    this.checkBottom();
+  },
+  methods: {
+    getUnits() {
+      this.loading = true;
+      this.$store
+        .dispatch("units/getUnits", { page: ++this.page, q: "" })
+        .then(() => {
+          this.loading = false;
+        });
+    },
+    checkBottom() {
+      window.addEventListener("scroll", () => {
+        if (
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight
+        ) {
+          this.getUnits();
+        }
+      });
+    },
   },
 };
 </script>
@@ -48,6 +79,10 @@ export default {
     padding: 5%;
     column-gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  .loading-text {
+    padding: 5px;
+    text-align: center;
   }
 }
 </style>
