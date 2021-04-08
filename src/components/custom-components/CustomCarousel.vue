@@ -1,6 +1,8 @@
 <template>
   <div class="custom-carousel">
-    <img :src="BASE_URL + presentImg" :alt="name" />
+    <transition name="slide" mode="out-in">
+      <img :src="BASE_URL + presentImg" :alt="name" :key="presentImg"
+    /></transition>
     <div class="indicator-container">
       <carousel-indicator
         class="indicator"
