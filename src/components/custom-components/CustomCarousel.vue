@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-carousel">
+  <div :class="'custom-carousel ' + setClass">
     <transition name="slide" mode="out-in">
       <img :src="BASE_URL + presentImg" :alt="name" :key="presentImg"
     /></transition>
@@ -28,6 +28,10 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    setClass: {
+      type: String,
+      default: "",
     },
   },
   data: () => {
@@ -72,6 +76,10 @@ export default {
   img {
     width: 100%;
     height: 100%;
+  }
+  &.transparent-border {
+    border: transparent;
+    padding: 0px;
   }
 }
 .slide {

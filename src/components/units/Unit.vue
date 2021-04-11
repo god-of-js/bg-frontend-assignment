@@ -1,13 +1,15 @@
 <template>
   <div class="unit">
     <custom-carousel :pictures="pictures" :name="name + ', ' + region" />
-    <div class="info-content" @click="viewUnit">
-      <h4>{{ name + "-" + region }}</h4>
-      <p>{{ description }}</p>
-      <p><b>Cancellation Policy: </b>{{ cancellation }}</p>
-      <span>{{ price }} BTC</span>
-      <ratings :rating="rating" />
-    </div>
+    <router-link :to="'/units/' + id" class="link">
+      <div class="info-content">
+        <h4>{{ name + "-" + region }}</h4>
+        <p>{{ description }}</p>
+        <p><b>Cancellation Policy: </b>{{ cancellation }}</p>
+        <span>{{ price }} BTC</span>
+        <ratings :rating="rating" />
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -56,11 +58,6 @@ export default {
     CustomCarousel,
     Ratings,
   },
-  methods: {
-    viewUnit() {
-      this.$router.push("/units/" + this.id);
-    },
-  },
 };
 </script>
 
@@ -78,11 +75,15 @@ export default {
     }
     p {
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
       overflow: hidden;
       font-size: 0.8em;
     }
+  }
+  .link {
+    text-decoration: none;
+    color: $black;
   }
 }
 </style>

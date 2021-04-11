@@ -1,5 +1,5 @@
 <template>
-  <fieldset :class="[err ? 'error' : '']">
+  <fieldset>
     <input
       :type="type"
       name="input"
@@ -9,22 +9,13 @@
       @input="$emit('update:input', $event.target.value)"
     />
     <label for="input" class="label"> {{ placeholder }}</label>
-    <span class="error-msg"></span>
   </fieldset>
 </template>
 
 <script>
 export default {
   name: "CustomInput",
-  model: {
-    prop: "value",
-    event: "update",
-  },
   props: {
-    err: {
-      type: Boolean,
-      default: false,
-    },
     type: {
       type: String,
       default: "text",
@@ -68,9 +59,6 @@ fieldset {
   input:not(:placeholder-shown) + label {
     transform: scale(0.9) translateY(-100%) translateX(-5px);
     font-size: 0.7em;
-  }
-  .error-msg {
-    color: red;
   }
 }
 </style>

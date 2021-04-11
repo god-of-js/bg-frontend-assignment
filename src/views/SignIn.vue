@@ -13,9 +13,11 @@
           :requiredInput="true"
           :type="'password'"
         />
-        <custom-button :inActive="checkEmail" :loading="loading">
-          Sign In</custom-button
-        >
+        <div class="action-container">
+          <custom-button :inActive="checkEmail" :loading="loading">
+            Sign In</custom-button
+          >
+        </div>
       </form>
     </article>
   </div>
@@ -69,7 +71,7 @@ export default {
   article {
     width: 25%;
     padding: 30px;
-    height: 30%;
+    height: 35%;
     border: 1px solid $border-color;
     @include box-shadow();
     b {
@@ -84,14 +86,13 @@ export default {
       height: 50px;
       margin-left: 10px;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       border-radius: 50%;
     }
   }
   button {
-    float: right;
-    margin-top: 20px;
+    margin: auto;
   }
   .example-email {
     text-align: left;

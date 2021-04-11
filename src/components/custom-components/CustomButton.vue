@@ -1,7 +1,8 @@
 <template>
   <button
-    :class="[inActive ? 'in-active-btn' : 'active', 'btn']"
+    :class="[inActive ? 'in-active-btn' : 'active', 'btn ' + setClass]"
     :disabled="inActive"
+    v-on="$listeners"
   >
     <slot v-if="!loading" />
     <span v-else>loading...</span>
@@ -20,6 +21,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    setClass: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
@@ -30,7 +35,9 @@ button {
   outline: none;
   border: transparent;
   width: fit-content;
-  padding: 6px 30px;
+  padding: 10px;
+  height: 46px;
+  width: 80%;
   border-radius: 5px;
   font-size: 0.9em;
   &.in-active-btn {
@@ -41,6 +48,13 @@ button {
   &.active {
     color: $white;
     background-color: $black;
+    cursor: pointer;
+  }
+  &.circle {
+    border-radius: 50%;
+    padding: 4px 4px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
   }
 }

@@ -16,7 +16,7 @@
       />
     </div>
     <div class="loading-text" v-if="loading">Loading....</div>
-    <modal />
+    <modal v-if="isModalActive" />
     <router-view></router-view>
   </div>
 </template>
@@ -36,6 +36,9 @@ export default {
   computed: {
     units() {
       return this.$store.state.units.units;
+    },
+    isModalActive() {
+      return this.$store.state.modals.isModalActive;
     },
   },
   components: {

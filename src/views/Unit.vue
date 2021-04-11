@@ -2,11 +2,15 @@
   <div class="unit">
     <article>
       <router-link to="/units">
-        <custom-button class="mdi mdi-close close-btn"></custom-button
+        <custom-button
+          class="mdi mdi-close close-btn"
+          :setClass="'circle'"
+        ></custom-button
       ></router-link>
       <custom-carousel
         :pictures="unit.pictures"
         :name="unit.name + ', ' + unit.region"
+        :setClass="'transparent-border '"
         v-if="unit.pictures"
       />
       <div class="content-container">
@@ -30,7 +34,9 @@
             v-text="availability"
           />
         </div>
-        <custom-button class="book-btn">Book </custom-button>
+        <custom-button class="book-btn" @click.native="bookUnit"
+          >Book
+        </custom-button>
       </div>
     </article>
   </div>
@@ -54,6 +60,17 @@ export default {
   },
   mounted() {
     this.$store.dispatch("units/getUnit", { id: this.$route.params.id });
+  },
+  methods: {
+    bookUnit() {
+      this.$store.commit("modals/setActiveModal", {
+        isModalActive: true,
+        activeModal: "BookUnit",
+        commonData: {
+          unitData: this.unit,
+        },
+      });
+    },
   },
 };
 </script>
@@ -112,14 +129,14 @@ export default {
   }
 }
 ::v-deep {
-  .custom-carousel {
-    border: transparent;
-    padding: 0px;
+  .book-btn {
+    &.btn {
+      width: 60%;
+      margin: auto;
+    }
   }
   .close-btn {
     &.btn {
-      border-radius: 50%;
-      padding: 4px 4px;
       position: fixed;
       z-index: 5;
       right: 0;

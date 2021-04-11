@@ -2,7 +2,12 @@
   <div class="modal">
     <modal-wrap>
       <div class="modal-card">
-        <!-- <custom-button></custom-button> -->
+        <div class="btn-container">
+          <custom-button :setClass="'circle'" @click.native="close"
+            ><i class="mdi mdi-close"></i>
+          </custom-button>
+        </div>
+        <component :is="activeModal" />
       </div>
     </modal-wrap>
   </div>
@@ -10,10 +15,29 @@
 
 <script>
 import ModalWrap from "./ModalWrap";
+import CustomButton from "../custom-components/CustomButton";
+import components from "./components";
 export default {
   name: "Modal",
+  data: () => {
+    return {
+      componentId: "",
+    };
+  },
+  computed: {
+    activeModal() {
+      return this.$store.state.modals.activeModal;
+    },
+  },
   components: {
     ModalWrap,
+    CustomButton,
+    ...components,
+  },
+  methods: {
+    close() {
+      this.$store.commit("modals/setActiveModal", {});
+    },
   },
 };
 </script>
@@ -26,5 +50,9 @@ export default {
   border-radius: 5px;
   background: $white;
   margin: auto;
+  .btn-container {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 </style>
