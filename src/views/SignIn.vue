@@ -91,8 +91,10 @@ export default {
       border-radius: 50%;
     }
   }
-  button {
-    margin: auto;
+  .action-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
   }
   .example-email {
     text-align: left;
