@@ -47,12 +47,18 @@ export default {
   },
   methods: {
     prev() {
-      if (this.currentIndex === 0) this.currentIndex = this.pictures.length - 1;
-      else this.currentIndex--;
+      if (this.currentIndex === 0) {
+        this.currentIndex = this.pictures.length - 1;
+      } else {
+        this.currentIndex--;
+      }
     },
     nextImage() {
-      if (this.currentIndex !== this.pictures.length - 1) this.currentIndex++;
-      else this.currentIndex = 0;
+      if (this.currentIndex !== this.pictures.length - 1) {
+        this.currentIndex++;
+      } else {
+        this.currentIndex = 0;
+      }
     },
   },
   components: {

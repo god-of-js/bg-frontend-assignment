@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { LOGIN } from "@/store/StoreVariables";
 import EmailValidation from "@/helpers/EmailValidation.js";
 import CustomInput from "@/components/custom-components/CustomInput.vue";
 import CustomButton from "@/components/custom-components/CustomButton.vue";
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     checkEmail() {
-      return !EmailValidation.email.test(this.data.email);
+      return !EmailValidation.isValidEmail.test(this.data.email);
     },
   },
   components: {
@@ -50,7 +51,7 @@ export default {
     login() {
       this.loading = true;
       this.$store
-        .dispatch("auth/login", this.data)
+        .dispatch(`auth/${LOGIN}`, this.data)
         .then(() => this.$router.push("/units"))
         .finally(() => {
           this.loading = false;

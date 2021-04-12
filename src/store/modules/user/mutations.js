@@ -1,7 +1,7 @@
+import { SET_USER_DATA } from "../../StoreVariables";
 export default {
-  setUserData(state, params) {
+  [SET_USER_DATA](state, params) {
     state.token = params.token;
-    console.log(state.token, params.token);
     state.user = params.user;
   },
 };

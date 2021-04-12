@@ -1,8 +1,9 @@
+import { SET_UNIT, SET_UNITS } from "../../StoreVariables";
 export default {
-  setUnits(state, params) {
+  [SET_UNITS](state, params) {
     state.units.push(...params);
   },
-  setUnit(state, param) {
+  [SET_UNIT](state, param) {
     state.unit = param;
   },
 };

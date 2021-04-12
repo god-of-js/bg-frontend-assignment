@@ -1,3 +1,4 @@
+import { SET_ACTIVE_MODAL } from "../../StoreVariables";
 export default {
   namespaced: true,
   state: {
@@ -6,8 +7,7 @@ export default {
     commonData: {},
   },
   mutations: {
-    setActiveModal(state, params) {
-      console.log(params);
+    [SET_ACTIVE_MODAL](state, params) {
       state.isModalActive = params.isModalActive || false;
       state.activeModal = params.activeModal || "";
       state.commonData = params.commonData || {};

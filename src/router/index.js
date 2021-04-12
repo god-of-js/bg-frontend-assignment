@@ -1,26 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Units from "../views/Units.vue";
-import Unit from "../views/Unit.vue";
 import SignIn from "../views/SignIn.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/units",
-    name: "Units",
+    name: "units",
     component: Units,
     children: [
       {
         path: "/units/:id",
-        name: "Unit",
-        component: Unit,
+        name: "unit",
+        component: () => import("../views/Unit.vue"),
       },
     ],
-  },
-  {
-    path: "*",
-    redirect: "/",
   },
   {
     path: "/",
@@ -31,6 +26,10 @@ const routes = [
     path: "/about",
     name: "About",
     component: () => import("../views/About.vue"),
+  },
+  {
+    path: "*",
+    redirect: "/",
   },
 ];
 

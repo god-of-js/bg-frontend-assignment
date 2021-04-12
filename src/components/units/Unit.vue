@@ -1,7 +1,7 @@
 <template>
   <div class="unit">
     <custom-carousel :pictures="pictures" :name="name + ', ' + region" />
-    <router-link :to="'/units/' + id" class="link">
+    <router-link :to="{ name: 'unit', params: { id } }" class="link">
       <div class="info-content">
         <h4>{{ name + "-" + region }}</h4>
         <p>{{ description }}</p>
@@ -48,11 +48,6 @@ export default {
     description: {
       type: String,
     },
-  },
-  data: () => {
-    return {
-      dummyPictures: ["one", "two", "three", "four"],
-    };
   },
   components: {
     CustomCarousel,

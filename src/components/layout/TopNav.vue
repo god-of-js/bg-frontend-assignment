@@ -3,12 +3,10 @@
     <div>
       <b><span>Blueground on </span> <span class="circle">Mars</span></b>
     </div>
-    <nav>
-      <router-link to="/profile" class="link">
-        <img :src="user.picture" :alt="user.name" width="40" height="40" />
-        <span>{{ user.name }}</span>
-      </router-link>
-    </nav>
+    <div class="profile-container">
+      <img :src="user.picture" :alt="user.name" width="40" height="40" />
+      <span>{{ user.name }}</span>
+    </div>
   </div>
 </template>
 
@@ -47,7 +45,7 @@ export default {
     justify-content: center;
     border-radius: 50%;
   }
-  .link {
+  .profile-container {
     display: flex;
     align-items: center;
     text-decoration: none;

@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { GET_UNITS } from "@/store/StoreVariables";
 import TopNav from "@/components/layout/TopNav.vue";
 import Unit from "@/components/units/Unit.vue";
 import Modal from "@/components/modals/Modal.vue";
@@ -34,12 +36,10 @@ export default {
     };
   },
   computed: {
-    units() {
-      return this.$store.state.units.units;
-    },
-    isModalActive() {
-      return this.$store.state.modals.isModalActive;
-    },
+    ...mapState({
+      units: (state) => state.units.units,
+      isModalActive: (state) => state.modals.isModalActive,
+    }),
   },
   components: {
     TopNav,
@@ -54,7 +54,7 @@ export default {
     getUnits() {
       this.loading = true;
       this.$store
-        .dispatch("units/getUnits", { page: ++this.page, q: "" })
+        .dispatch(`units/${GET_UNITS}`, { page: ++this.page, q: "" })
         .then(() => {
           this.loading = false;
         });

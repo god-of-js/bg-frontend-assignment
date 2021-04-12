@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ModalWrap from "./ModalWrap";
 import CustomButton from "../custom-components/CustomButton";
 import components from "./components";
@@ -25,9 +26,9 @@ export default {
     };
   },
   computed: {
-    activeModal() {
-      return this.$store.state.modals.activeModal;
-    },
+    ...mapState({
+      activeModal: (state) => state.modals.activeModal,
+    }),
   },
   components: {
     ModalWrap,

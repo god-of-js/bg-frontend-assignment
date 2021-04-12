@@ -1,7 +1,7 @@
 <template>
   <div class="unit">
     <article>
-      <router-link to="/units">
+      <router-link :to="{ name: 'units' }">
         <custom-button
           class="mdi mdi-close close-btn"
           :setClass="'circle'"
@@ -43,15 +43,17 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { GET_UNIT, SET_ACTIVE_MODAL } from "@/store/StoreVariables";
 import CustomCarousel from "../components/custom-components/CustomCarousel.vue";
 import CustomButton from "../components/custom-components/CustomButton.vue";
 import Ratings from "@/components/units/Ratings.vue";
 export default {
   name: "Unit",
   computed: {
-    unit() {
-      return this.$store.state.units.unit;
-    },
+    ...mapState({
+      unit: (state) => state.units.unit,
+    }),
   },
   components: {
     CustomCarousel,
@@ -59,11 +61,11 @@ export default {
     Ratings,
   },
   mounted() {
-    this.$store.dispatch("units/getUnit", { id: this.$route.params.id });
+    this.$store.dispatch(`units/${GET_UNIT}`, { id: this.$route.params.id });
   },
   methods: {
     bookUnit() {
-      this.$store.commit("modals/setActiveModal", {
+      this.$store.commit(`modals/${SET_ACTIVE_MODAL}`, {
         isModalActive: true,
         activeModal: "BookUnit",
         commonData: {

@@ -1,0 +1,9 @@
+export const LOGIN = "login";
+export const LOGOUT = "logout";
+export const SET_USER_DATA = "setUserData";
+export const SET_ACTIVE_MODAL = "setActiveModal";
+export const GET_UNITS = "getUnits";
+export const GET_UNIT = "getUnit";
+export const BOOK_UNIT = "bookUnit";
+export const SET_UNIT = "setUnits";
+export const SET_UNITS = "setUnit";

@@ -8,13 +8,12 @@ let config = {
 const service = axios.create(config);
 service.interceptors.response.use(
   (response) => {
-    console.log(response);
     return Promise.resolve(response);
   },
   (err) => {
-    console.log(err.response);
-    if (err.response.data.message === "jwt expired")
+    if (err.response.data.message === "jwt expired") {
       store.dispatch("user/logout");
+    }
     return Promise.reject(err.response);
   }
 );
