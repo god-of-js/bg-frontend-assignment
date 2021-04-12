@@ -1,5 +1,5 @@
 <template>
-  <div class="top-nav">
+  <div class="top-bar">
     <div>
       <b><span>Blueground on </span> <span class="circle">Mars</span></b>
     </div>
@@ -11,19 +11,20 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
-  name: "TopNav",
+  name: "TopBar",
   computed: {
-    user() {
-      return this.$store.state.user.user;
-    },
+    ...mapState({
+      user: (state) => state.user.user,
+    }),
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/colors.scss";
-.top-nav {
+.top-bar {
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;

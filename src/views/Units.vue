@@ -1,6 +1,6 @@
 <template>
   <div class="units">
-    <top-nav />
+    <top-bar />
     <div class="units-container">
       <unit
         v-for="(unit, index) in units"
@@ -24,7 +24,7 @@
 <script>
 import { mapState } from "vuex";
 import { GET_UNITS } from "@/store/StoreVariables";
-import TopNav from "@/components/layout/TopNav.vue";
+import TopBar from "@/components/layout/TopBar.vue";
 import Unit from "@/components/units/Unit.vue";
 import Modal from "@/components/modals/Modal.vue";
 export default {
@@ -42,7 +42,7 @@ export default {
     }),
   },
   components: {
-    TopNav,
+    TopBar,
     Unit,
     Modal,
   },
