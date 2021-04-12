@@ -14,6 +14,9 @@ export default {
       .get(`/units?page=${page}&perPage=12&q=${q}`)
       .then(({ data }) => {
         commit(SET_UNITS, data.data);
+      })
+      .catch((err) => {
+        alert(err.data.message);
       });
   },
   [GET_UNIT]({ rootState, commit }, { id }) {

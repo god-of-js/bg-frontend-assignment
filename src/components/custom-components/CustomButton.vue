@@ -2,7 +2,6 @@
   <button
     :class="[inActive ? 'in-active-btn' : 'active', 'btn ' + setClass]"
     :disabled="inActive"
-    v-on="$listeners"
   >
     <slot v-if="!loading" />
     <span v-else>loading...</span>
