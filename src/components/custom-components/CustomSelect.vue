@@ -11,7 +11,7 @@
         {{ option }}
       </option>
     </select>
-    <label for="input" :class="checkSelectValue"> {{ placeholder }}</label>
+    <label for="select" :class="checkSelectValue"> {{ placeholder }}</label>
   </fieldset>
 </template>
 
